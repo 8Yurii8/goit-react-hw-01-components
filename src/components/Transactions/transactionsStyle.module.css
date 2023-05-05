@@ -1,0 +1,29 @@
+.table {
+  width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: solid;
+}
+
+.th {
+  background-color: #f2f2f2;
+  color: #424242;
+  font-weight: bold;
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+  text-transform: uppercase;
+}
+
+.td {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  text-align: left;
+}
+
+.type {
+  text-transform: capitalize;
+}

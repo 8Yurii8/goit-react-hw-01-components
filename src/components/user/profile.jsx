@@ -1,30 +1,44 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ProfileStyles, Description, Avatar, Stats, StatsItem, StatsItemSecond } from './ProfileStyles'
-const Profile = ({ username, tag, location, avatar, stats }) => {
+import css from './profileStyle.module.css'
+import styled from 'styled-components';
+
+export const Profile = ({ username, tag, location, avatar, stats }) => {
   const { followers, views, likes } = stats;
 
+  const GraySpan = styled.span`
+  color: gray;
+`;
+
+const BlackSpan = styled(GraySpan)`
+  color: black;
+`;
+
+const GrayP = styled.p`color: gray;`;
+
   return (
-    <div  style={ProfileStyles}>
-      <div style={Description}>
-        <img src={avatar} alt="User avatar" style={Avatar} />
-        <p className="name">{username}</p>
-        <p style={{color: "gray"}}>@{tag}</p>
-        <p style={{color: "gray"}}>{location}</p>
+    <div  className={css.profile}>
+      <div className={css.description}>
+        <img src={avatar} alt="User avatar" className={css.avatar} />
+        <p >{username}</p>
+        <GrayP>@{tag}</GrayP>
+        <GrayP>{location}</GrayP>
       </div>
 
-      <ul style={Stats}>
-        <li style={StatsItem}> 
-          <span style={{color: "gray"}}>Followers</span>
-          <span style={{color: "black"}}>{followers}</span>
+      <ul className={css.stats}>
+        <li className={css.statsItem}> 
+        <GraySpan>Followers</GraySpan>
+        <BlackSpan>{followers}</BlackSpan>
         </li>
-        <li style={StatsItemSecond}>
-          <span style={{color: "gray"}}>Views</span>
-          <span style={{color: "black"}}>{views}</span>
+        <li className={css.statsItemSecond}>
+        <GraySpan>Views</GraySpan>
+        <BlackSpan>{views}</BlackSpan>
+          
         </li>
-        <li style={StatsItem}>
-          <span style={{color: "gray"}}>Likes</span>
-          <span style={{color: "black"}}>{likes}</span>
+        <li className={css.statsItem}>
+        <GraySpan>Likes</GraySpan>
+        <BlackSpan>{likes}</BlackSpan>
+          
         </li>
       </ul>
     </div>
@@ -43,4 +57,4 @@ Profile.propTypes = {
   }).isRequired,
 };
 
-export default Profile;
+

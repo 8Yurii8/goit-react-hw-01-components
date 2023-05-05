@@ -1,27 +1,36 @@
 import React from "react";
-import transactions from './transactions.json'
-import { Styles } from './Style'
+import css from './transactionsStyle.module.css'
+import PropTypes from 'prop-types';
 
-
-export const TransactionHistory = () => (
-  <table style={Styles.table} className="transaction-history">
+export const TransactionHistory = ({transactions}) => (
+  <table className={css.table} >
   <thead>
     <tr>
-      <th style={Styles.th}>Type</th>
-      <th style={Styles.th}>Amount</th>
-      <th style={Styles.th}>Currency</th>
+      <th className={css.th} >Type</th>
+      <th className={css.th} >Amount</th>
+      <th className={css.th} >Currency</th>
     </tr>
   </thead>
-
   <tbody>
-    {transactions.map((item) => (
-      <tr key={item.id}>
-        <td style={{ ...Styles.td, ...Styles.type }}>{item.type}</td>
-        <td style={Styles.td}>{item.amount}</td>
-        <td style={Styles.td}>{item.currency}</td>
+    {transactions.map(({ id, type, amount, currency }) => (
+      <tr key={id}>
+       <td className={`${css.td} ${css.type}`}>{type}</td>
+        <td className={css.td} >{amount}</td>
+        <td className={css.td} >{currency}</td>
       </tr>
     ))}
   </tbody>
 </table>
     
   );
+
+  TransactionHistory.propTypes = {
+    transactions: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        type: PropTypes.string.isRequired,
+        amount: PropTypes.string.isRequired,
+        currency: PropTypes.string.isRequired,
+      })
+    ).isRequired
+  };

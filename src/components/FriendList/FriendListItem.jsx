@@ -1,17 +1,13 @@
 import React from 'react';
-import friends from './friends.json'
-import { Styles, Status } from './style'
+import css from './friendListStyle.module.css'
 
-
-export const FriendListItem = () => (
-  <ul style={Styles.friendList}>
-  {friends.map((item) => (
-    <li  key={item.id} style={Styles.item}>
-      <span  style={{ ...Status, backgroundColor: item.isOnline ? "green" : "red" }}></span>
-      <img  src={item.avatar} alt="User avatar" style={Styles.avatar} />
-      <p style={Styles.name}>{item.name}</p>
+export const FriendListItem = ({avatar, name, isOnline}) => {
+  
+  return (
+    <li  className={css.item}>
+      <span className={`${css.status} ${isOnline ? css.status : css.offline}`}></span>
+      <img  src={avatar} alt="User avatar" className={css.avatar}  />
+      <p className={css.name} >{name}</p>
     </li>
-  ))}
-</ul>
-    
-  );
+  )
+}

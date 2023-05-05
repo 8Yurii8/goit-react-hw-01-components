@@ -1,18 +1,21 @@
 import React from 'react';
-import friends from './friends.json'
 import PropTypes from 'prop-types';
 import { FriendListItem } from './FriendListItem';
 
-export const FriendList = () => {
-    const [item] = friends;
-  
+import css from './friendListStyle.module.css'
+
+export const FriendList = ({friends}) => {
     return (
-      <FriendListItem
-        id={item.id}
-        avatar={item.avatar}
-        name={item.name}
-        isOnline={item.isOnline}
-      />
+      <ul className={css.friendList} >
+        {friends.map((friend) => 
+        <FriendListItem
+        key={friend.id}
+        avatar={friend.avatar}
+        name={friend.name}
+        isOnline={friend.isOnline}
+      />)}
+      
+      </ul>
     )};
   
     FriendList.propTypes = {
@@ -22,6 +25,6 @@ export const FriendList = () => {
             avatar: PropTypes.string.isRequired,
             name: PropTypes.string.isRequired,
             isOnline: PropTypes.bool.isRequired,
-          }),
-        ),
+          })
+        ).isRequired
       };
