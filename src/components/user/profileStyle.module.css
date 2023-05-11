@@ -16,14 +16,12 @@
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   padding-bottom: 1px;
-  
 }
 
 .avatar {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  
 }
 
 .stats {
@@ -35,7 +33,6 @@
   border-radius: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
- 
 }
 
 .statsItem {
@@ -60,4 +57,3 @@
   gap: 5px;
   list-style-type: none;
 }
-        
